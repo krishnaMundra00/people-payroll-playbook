@@ -82,6 +82,11 @@ export const activitySeed: Activity[] = [
 export const currencyINR = (amount: number) =>
   new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(amount);
 
+export const financialYearLabel = (date: Date) => {
+  const startYear = date.getMonth() >= 3 ? date.getFullYear() : date.getFullYear() - 1;
+  return `FY ${startYear}–${String(startYear + 1).slice(-2)}`;
+};
+
 export const compactINR = (amount: number) => {
   if (amount >= 10_000_000) return `₹${(amount / 10_000_000).toFixed(2)} Cr`;
   if (amount >= 100_000) return `₹${(amount / 100_000).toFixed(1)} L`;
